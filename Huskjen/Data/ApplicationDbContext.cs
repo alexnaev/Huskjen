@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Huskjen.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Huskjen.Data
 {
@@ -8,5 +9,7 @@ namespace Huskjen.Data
         {
 
         }
+
+        public DbSet<Contact> Contacts { get; set; }
     }
 }
