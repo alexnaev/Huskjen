@@ -17,9 +17,11 @@ namespace Huskjen.Models
 
         [Required]
         public string Addrerss1 { get; set; }
-        public string Addrerss2 { get; set; }
+        public string? Addrerss2 { get; set; }
+
+        [Required]
         public string City { get; set; }
-        public string State { get; set; }
+        public string? State { get; set; }
 
         [DataType(DataType.PostalCode)]
         public int Zip { get; set; }
@@ -34,9 +36,9 @@ namespace Huskjen.Models
         [NotMapped]
         [Display(Name = "Image")]
         [DataType(DataType.Upload)]
-        public IFormFile ImageFile { get; set; }
-        public byte ImageData { get; set; }
-        public string ImageType { get; set; }
+        public IFormFile? ImageFile { get; set; }
+        public byte? ImageData { get; set; }
+        public string? ImageType { get; set; }
 
         [NotMapped]
         public string FullName { get { return $"{FirstName} {LastName}"; } }
