@@ -68,6 +68,8 @@ namespace Huskjen.Controllers
                     contact.ImageType = contact.ImageFile.ContentType;
                 }
 
+                contact.Created = DateTime.Now;
+
                 _context.Add(contact);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -96,7 +98,7 @@ namespace Huskjen.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Addrerss1,Addrerss2,City,State,Zip,Email,Phone,Created,ImageData,ImageType")] Contact contact)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Addrerss1,Addrerss2,City,State,Zip,Email,Phone,Created,ImageData,ImageType,ImageFile")] Contact contact)
         {
             if (id != contact.Id)
             {
@@ -105,6 +107,12 @@ namespace Huskjen.Controllers
 
             if (ModelState.IsValid)
             {
+                if (contact.ImageFile != null)
+                {
+                    contact.ImageData = await _imageService.ConvertFileToByteArrayAsync(contact.ImageFile);
+                    contact.ImageType = contact.ImageFile.ContentType;
+                }
+
                 try
                 {
                     _context.Update(contact);

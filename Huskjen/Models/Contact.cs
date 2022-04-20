@@ -16,7 +16,10 @@ namespace Huskjen.Models
         public string LastName { get; set; }
 
         [Required]
+        [Display(Name = "Address 1")]
         public string Addrerss1 { get; set; }
+
+        [Display(Name = "Address 2")]
         public string? Addrerss2 { get; set; }
 
         [Required]

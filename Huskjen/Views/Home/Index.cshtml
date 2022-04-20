@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
 <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
@@ -10,12 +10,11 @@
     <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3">Huskjen. An address book written in ASP.NET Core</h1>
         <p class="lead">
-            A simple, fast and scalable bug tracking system that helps you manage bugs easily
-            and deliver great products on time.
+            A simple, fast and easy to use web application. Huskjen (meaning "the memory") helps you "remember" (or manage) large amounts of contact information.
         </p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
             <a class="btn btn-primary btn-lg px-4 me-md-2" asp-area="" asp-controller="Contacts" asp-action="Index">Try It!</a>
-            <button type="button" class="btn btn-outline-primary btn-lg px-4">About</button>
+            <a class="btn btn-outline-primary btn-lg px-4" asp-area="" asp-controller="Home" asp-action="About">About</a>
         </div>
     </div>
 </div>
