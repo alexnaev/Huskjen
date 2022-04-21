@@ -6,12 +6,17 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(DataUtility.GetConnectionString(builder.Configuration)));
 builder.Services.AddScoped<IImageService, BasicImageService>();
 
 var app = builder.Build();
+
+var dbContext = app.Services
+                        .CreateScope().ServiceProvider
+                        .GetRequiredService<ApplicationDbContext>();
+
+await dbContext.Database.MigrateAsync();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
