@@ -19,15 +19,15 @@ namespace Huskjen.Data.Migrations
                     FirstName = table.Column<string>(type: "text", nullable: false),
                     LastName = table.Column<string>(type: "text", nullable: false),
                     Addrerss1 = table.Column<string>(type: "text", nullable: false),
-                    Addrerss2 = table.Column<string>(type: "text", nullable: false),
+                    Addrerss2 = table.Column<string>(type: "text", nullable: true),
                     City = table.Column<string>(type: "text", nullable: false),
-                    State = table.Column<string>(type: "text", nullable: false),
+                    State = table.Column<string>(type: "text", nullable: true),
                     Zip = table.Column<int>(type: "integer", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
                     Phone = table.Column<string>(type: "text", nullable: false),
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ImageData = table.Column<byte>(type: "smallint", nullable: false),
-                    ImageType = table.Column<string>(type: "text", nullable: false)
+                    ImageData = table.Column<byte[]>(type: "bytea", nullable: true),
+                    ImageType = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
